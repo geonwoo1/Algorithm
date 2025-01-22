@@ -65,7 +65,7 @@ const updateReadme = () => {
     });
 
     // 총 문제 개수 계산
-    const totalProblems = difficultyCount['LEVEL 0'] + difficultyCount['LEVEL 1'] + difficultyCount['LEVEL 2'];
+    const totalProblems = difficultyCount['LEVEL 0'] + difficultyCount['LEVEL 1'] + difficultyCount['LEVEL 2'] + difficultyCount['LEVEL 3'] + difficultyCount['LEVEL 4'] + difficultyCount['LEVEL 5'];
 
     // README 내용 구성
     const readmeContent = `
@@ -76,9 +76,9 @@ const updateReadme = () => {
 - LEVEL 0: ${difficultyCount['LEVEL 0']}문제
 - LEVEL 1: ${difficultyCount['LEVEL 1']}문제
 - LEVEL 2: ${difficultyCount['LEVEL 2']}문제
-- LEVEL 3: ${difficultyCount['LEVEL 2']}문제
-- LEVEL 4: ${difficultyCount['LEVEL 2']}문제
-- LEVEL 5: ${difficultyCount['LEVEL 2']}문제
+- LEVEL 3: ${difficultyCount['LEVEL 3']}문제
+- LEVEL 4: ${difficultyCount['LEVEL 4']}문제
+- LEVEL 5: ${difficultyCount['LEVEL 5']}문제
 
 ### 문제 목록:
 
