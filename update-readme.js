@@ -12,13 +12,19 @@ const updateReadme = () => {
     const difficultyCount = {
         'LEVEL 0': 0,
         'LEVEL 1': 0,
-        'LEVEL 2': 0
+        'LEVEL 2': 0,
+        'LEVEL 3': 0,
+        'LEVEL 4': 0,
+        'LEVEL 5': 0,
     };
 
     const problemsByLevel = {
         'LEVEL 0': [],
         'LEVEL 1': [],
-        'LEVEL 2': []
+        'LEVEL 2': [],
+        'LEVEL 3': [],
+        'LEVEL 4': [],
+        'LEVEL 5': [],
     };
 
     // 프로그래머스 디렉토리 내의 난이도 폴더를 읽기
@@ -44,6 +50,15 @@ const updateReadme = () => {
                 } else if (folder.includes('2')) {
                     difficultyCount['LEVEL 2']++;
                     problemsByLevel['LEVEL 2'].push(`- [${problemName}](프로그래머스/${folder}/${file})`);
+                } else if (folder.includes('3')) {
+                    difficultyCount['LEVEL 3']++;
+                    problemsByLevel['LEVEL 3'].push(`- [${problemName}](프로그래머스/${folder}/${file})`);
+                } else if (folder.includes('4')) {
+                    difficultyCount['LEVEL 4']++;
+                    problemsByLevel['LEVEL 4'].push(`- [${problemName}](프로그래머스/${folder}/${file})`);
+                } else if (folder.includes('5')) {
+                    difficultyCount['LEVEL 5']++;
+                    problemsByLevel['LEVEL 5'].push(`- [${problemName}](프로그래머스/${folder}/${file})`);
                 }
             });
         }
@@ -61,6 +76,9 @@ const updateReadme = () => {
 - LEVEL 0: ${difficultyCount['LEVEL 0']}문제
 - LEVEL 1: ${difficultyCount['LEVEL 1']}문제
 - LEVEL 2: ${difficultyCount['LEVEL 2']}문제
+- LEVEL 3: ${difficultyCount['LEVEL 2']}문제
+- LEVEL 4: ${difficultyCount['LEVEL 2']}문제
+- LEVEL 5: ${difficultyCount['LEVEL 2']}문제
 
 ### 문제 목록:
 
