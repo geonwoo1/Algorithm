@@ -1,0 +1,36 @@
+name: Update README
+
+on:
+  push:
+    paths:
+      - 'problems/**'        # 문제 폴더 내 파일이 변경될 때만 실행
+      - '.github/workflows/**' # 워크플로우 파일 변경 시에도 실행
+
+jobs:
+  update-readme:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16' # Node.js 버전 지정
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Update README.md
+        run: node update-readme.js
+
+      - name: Commit and push changes
+        run: |
+          git config --local user.name "github-actions"
+          git config --local user.email "actions@github.com"
+          git add README.md
+          git commit -m "Update README.md with new problems"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
