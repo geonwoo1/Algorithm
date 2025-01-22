@@ -1,28 +1,20 @@
 const fs = require('fs');
 const path = require('path');
 
-const PROBLEM_DIR = './프로그래머스'; // 문제 파일이 저장된 폴더 경로
-const README_FILE = './README.md';
+// 문제 파일이 저장된 디렉토리
+const problemsDir = path.join(__dirname, '프로그래머스');
 
-function getProblemList() {
-  const files = fs.readdirSync(PROBLEM_DIR);
-  return files.map(file => {
-    const [id, title] = file.split('_');
-    const url = `https://programmers.co.kr/learn/courses/30/lessons/${id}`;
-    return `- [${title.trim()}](${url})`;
-  });
-}
+// README 파일 경로
+const readmePath = path.join(__dirname, 'README.md');
 
-function updateReadme() {
-  const problemList = getProblemList();
-  const content = `
-# Programmers 문제 풀이 기록
+// README 업데이트 함수
+const updateReadme = () => {
+    const problemFiles = fs.readdirSync(problemsDir);
+    const problemList = problemFiles.map(file => `- [${file.replace('.js', '')}](프로그래머스/${file})`);
+    const readmeContent = `# 문제 목록\n\n## 프로그래머스 문제\n\n${problemList.join('\n')}`;
+    fs.writeFileSync(readmePath, readmeContent, 'utf8');
+    console.log('README.md 업데이트 완료');
+};
 
-## 문제 목록
-${problemList.join('\n')}
-`;
-
-  fs.writeFileSync(README_FILE, content.trim());
-}
-
+// 함수 실행
 updateReadme();
