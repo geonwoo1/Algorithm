@@ -1,21 +1,19 @@
 function solution(topping) {
     var answer = 0;
+    let cake = new Set();
+    let cake2 = new Set([...topping]);
+    let cnt = cake2.size;
     let dic = {};
-    let set = new Set();
-    let cnt = 0;
-    for (let i of topping) {
-        if (dic[i]) dic[i]++;
-        else {
-            dic[i] = 1;
-            cnt++;
-        }
+    for(var i of topping){
+        if(i in dic) dic[i]+=1
+        else dic[i] = 1
     }
-    for (let i of topping) {
-        dic[i]--;
-        if (dic[i] === 0) cnt--;
+    for(var i of topping){
+        dic[i]-=1;
+        if(dic[i] == 0) cnt-=1;
+        cake.add(i)
+        if(cake.size == cnt) answer++
+    }
 
-        set.add(i); 
-        if (set.size === cnt) answer++;
-    }
     return answer;
 }
